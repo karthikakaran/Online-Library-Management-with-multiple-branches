@@ -1,0 +1,27 @@
+<!DOCTYPE html>	
+<html ng-app="libApp">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="/controller/controller.js"></script>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<style> 
+h1{
+    background-image: url("/library.jpg");
+    background-size: 80px 90px;
+    padding-top: 40px;
+}
+body{	background-color: #cccccc;	}
+</style>
+</head>
+<body>
+   <div class="container" ng-controller="mainController">
+   <center><h1><strong><font color="white" size="60px">Dallas Library</font><strong></h1></center>
+   <input type="button" value="Create New Borrower" class="btn btn-primary btn-lg" ng-click="addNewBorrower()"/>
+   <input type="button" value="Search/Check Out books" class="btn btn-primary btn-lg" ng-click="checkOutBooks()"/>
+   <input type="button" value="Check In books" class="btn btn-primary btn-lg" ng-click="checkInBooks()"/>
+   <input type="button" value="Fine Details" class="btn btn-primary btn-lg" ng-click="fineDetails()"/>
+</body>
+<div ng-view></div>
+</html>

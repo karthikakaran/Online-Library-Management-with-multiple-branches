@@ -1,0 +1,31 @@
+<!DOCTYPE html>	
+<html ng-app="libApp">
+</head>
+<body>
+<form name="fineDetailForm">
+   <div class="container" ng-controller="fineDetailsController">
+	<br><br>
+	<input type="number" name="card_no" ng-model="card_no"><input type="button" value="Fetch Fines" ng-click="finesFetchFunction()" ng-disabled="fineDetailForm.card_no.$pristine" title="Enter a card no">
+	<label style="padding-left:45em">Total:</label>&nbsp;
+	<label ng-if="totalAmt == 0">$0.00</label><label ng-if="totalAmt > 0">{{totalAmt|currency}}</label>&nbsp;
+	<input type="button" value="Pay" ng-click="totalFinePayFunction()" ng-disabled="totalAmt == 0">	
+	<span style="padding-left:5em"><img src="/refresh.jpg" height="30" width="30" ng-click="finesUpdateFunction()"></span>
+     <table class="table">
+      <thead>
+     	<tr>
+	    <th>Loan Id</th><th>Book Id</th><th>Branch Id</th>
+	    <th>Date Out</th><th>Due Date</th>
+	    <th>Fine Amt</th>	
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-repeat="fine in fineDetails">
+		<td>{{fine.loan_id}}</td><td>{{fine.book_id}}</td><td>{{fine.branch_id}}</td><td>{{fine.date_out|date:'yyyy-MM-dd'}}</td>
+		<td>{{fine.due_date|date:'yyyy-MM-dd'}}</td><td>{{fine.fine_amt|currency}}</td>
+	</tr>
+      </tbody>
+     </table>
+   </div>
+</form>
+</body>
+</html>

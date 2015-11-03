@@ -1,0 +1,47 @@
+<!DOCTYPE html>	
+<html ng-app="libApp">
+</head>
+<body>
+ <form name="checkInForm">
+   <div class="container" ng-controller="checkInController">
+   <center><h2>Book Check In</h2></center>
+   <table class="table">
+      <thead>	
+     	<tr>
+         <th><label>Card No</label></th>
+	<th><label>Book Id</label></th>	    
+	<th><label>Borrower First Name</label></th>
+	<th><label>Borrower Last Name</label></th>	
+	</tr>
+      </thead>
+      <tbody>
+        <tr>
+	   <td><input ng-model="card_no" id="txt_card_no" type="number" autofocus></td>
+	   <td><input ng-model="book_id" id="txt_book_id"></td>
+	   <td><input ng-model="fname" id="txt_fname"></td>
+	   <td><input ng-model="lname" id="txt_lname"></td>
+	   <td><input type="button" value="Search" ng-click="searchBookLoanFunction()"></td>
+        </tr>
+      </tbody>
+   </table>
+   <table class="table">
+      <thead>
+     	<tr>
+            <th><input type="button" value="Check-In" ng-click="CheckInBooksFunction()" ng-disabled="enableCheckInBtn" title="Choose a book to check in"></th>
+	    <th>Book Id</th><th>Loan Id</th>
+	    <th>Card No</th><th>Branch Id</th>
+	    <th>Date Out</th><th>Date due</th>	
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-repeat="book in bookLoanList"><td><input type="radio" name="checkOut_box" value="book.book_id" ng-click="CheckedInIndexFunction($index)"/></td>
+					 <td>{{book.book_id}}</td><td>{{book.loan_id}}</td><td>{{book.card_no}}</td>
+					 <td>{{book.branch_id}}</td><td>{{book.date_out|date:'yyyy-MM-dd'}}</td>
+					 <td>{{book.due_date|date:'yyyy-MM-dd'}}</td>
+        </tr>
+      </tbody>
+   </table>
+  </div>
+ </form>
+</body>
+</html>

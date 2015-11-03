@@ -1,0 +1,46 @@
+<!DOCTYPE html>	
+<html ng-app="libApp">
+</head>
+<body>
+ <form name="checkOutForm">
+   <div class="container" ng-controller="checkOutController">
+   <center><h2>Book Search</h2></center>
+   <table class="table">
+      <thead>	
+     	<tr><th><label>Book Id</label></th>
+        <th><label>Title</label></th>
+	<th><label>Author First Name</label></th>
+	<th><label>Author Last Name</label></th>	
+	</tr>
+      </thead>
+      <tbody>
+        <tr>
+	   <td><input ng-model="book_id" id="txt_book_id" autofocus></td><td><input ng-model="title" id="txt_title">
+	   <td><input ng-model="authorFname" id="txt_authorFname"></td><td><input ng-model="authorLname" id="txt_authorLname"></td>
+	   <td><input type="button" value="Search" ng-click="searchBooksFunction()"></td>
+        </tr>
+      </tbody>
+   </table>
+   <table class="table">
+      <thead>
+	<tr><th>Card Number</th><td><input ng-model="card_no" type="number" required><td></tr>	
+     	<tr>
+            <th><input type="button" value="Check-out" ng-click="CheckOutBooksFunction()" ng-disabled="enableCheckOutBtn" title="Choose a book to check out"></th>
+	    <th>Book Id</th><th>Title</th>
+	    <th>Author(s)</th><th>Branch Id</th>
+	    <th>No of copies</th><th>Copies in stock</th>	
+	</tr>
+      </thead>
+      <tbody>
+	<tr ng-repeat="book in bookList"><td><input type="radio" value="book.book_id" name="books_checkedout" ng-model="booksCheckedout"
+						ng-click="CheckedOutIndexFunction($index)"/></td>
+					 <td>{{book.book_id}}</td><td>{{book.title}}</td>
+					 <td>{{book.author_name}}</td><td>{{book.branch_id}}</td>
+					 <td>{{book.no_of_copies}}<td>{{book.r_copies}}</td>
+        </tr>
+      </tbody>
+   </table>
+  </div>
+ </form>
+</body>
+</html>
